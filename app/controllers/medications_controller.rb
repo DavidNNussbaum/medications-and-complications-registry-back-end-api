@@ -2,11 +2,12 @@ class MedicationsController < ApplicationController
     before_action :set_medication, only: [:show, :update, :destroy]
 
     def index 
-        @medication = Medication.order_by_name
+        @medications = Medication.order_by_name
+        render json: MedicationSerializer.new(@medications).serializable_hash 
     end
 
     def show
-        
+        render json: MedicationSerializer.new(@medication).serializable_hash
     end
 
     def create
@@ -27,3 +28,5 @@ class MedicationsController < ApplicationController
         def medication_params
             params.require(:medication).permit(:name_strength, :frequency, :administration_route)
         end
+
+         

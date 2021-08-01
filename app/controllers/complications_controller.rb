@@ -3,9 +3,9 @@ before_action: :set_complication, only: [:show, :update, :destroy]
 
     def index
         medication = Medication.find_by(id: params[:medication_id])
-        @complications = medication.ComplicationsController
+        @complications = medication.complications
 
-        render json: ComplicationsSerializer.new(@complications).serializable_hash
+        render json: ComplicationSerializer.new(@complications).serializable_hash
     end
 
     def show
@@ -29,5 +29,27 @@ before_action: :set_complication, only: [:show, :update, :destroy]
             render json: @complication.errors, status: :unprocessable_entity
         end
     end
+
+    def destroy
+        if @complication.destroy
+          render json: {message: "Complication successfully removed"}
+        else
+          render json: {message: "Something went wrong! Errors: #{@complication.errors.full_messages}"}
+        end
+      end
+    
+      private
+         
+        def set_complication
+          @complication = Complication.find(params[:id])
+        end
+    
+         
+        def complication_params
+          params.require(:complication).permit(:complication_severity, :complication_duration, :complication_description, :completely_resolved, :medication_id, :user_id )
+        end
+    end
+
+     
 
     
