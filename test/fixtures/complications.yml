@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  complication_severity: 1
+  complication_duration: MyString
+  complication_description: MyText
+  completely_resolved: false
+  medication_id: 1
+  user_id: 1
+
+two:
+  complication_severity: 1
+  complication_duration: MyString
+  complication_description: MyText
+  completely_resolved: false
+  medication_id: 1
+  user_id: 1

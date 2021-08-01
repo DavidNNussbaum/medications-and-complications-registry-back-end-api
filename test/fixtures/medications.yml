@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_strength: MyString
+  string: MyString
+  frequency: MyString
+  administration_route: MyString
+
+two:
+  name_strength: MyString
+  string: MyString
+  frequency: MyString
+  administration_route: MyString
