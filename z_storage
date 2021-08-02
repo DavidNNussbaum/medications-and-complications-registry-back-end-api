@@ -1,0 +1,3 @@
+In Complications Table
+t.index ["medication_id"], name: "index_complications_on_medication_id"
+t.index ["user_id"], name: "index_complications_on_user_id"
