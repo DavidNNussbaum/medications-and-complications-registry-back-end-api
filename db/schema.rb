@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_002917) do
+ActiveRecord::Schema.define(version: 2021_08_02_135400) do
 
   create_table "complications", force: :cascade do |t|
     t.integer "complication_severity"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2021_08_02_002917) do
 
   create_table "medications", force: :cascade do |t|
     t.string "name_strength"
-    t.string "string"
     t.string "frequency"
     t.string "administration_route"
     t.datetime "created_at", precision: 6, null: false
