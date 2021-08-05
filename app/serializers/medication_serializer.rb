@@ -1,10 +1,6 @@
 class MedicationSerializer
     include JSONAPI::Serializer
-    attributes :name_strength, :frequency, :administation_route, :complications, :id 
-  
-    attribute :name do |user|
-      "#{user.first_name} #{user.last_name}"
-    end
+    attributes :name_strength, :frequency, :administration_route, :complications, :id 
   
     def complications
       self.object.complications.map do |c|
