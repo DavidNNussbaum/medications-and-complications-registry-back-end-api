@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_135400) do
+ActiveRecord::Schema.define(version: 2021_08_06_012159) do
 
   create_table "complications", force: :cascade do |t|
     t.integer "complication_severity"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_135400) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["medication_id"], name: "index_complications_on_medication_id"
+    t.index ["user_id"], name: "index_complications_on_user_id"
   end
 
   create_table "medications", force: :cascade do |t|

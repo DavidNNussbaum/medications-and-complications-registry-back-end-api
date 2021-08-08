@@ -1,6 +1,6 @@
 # README
 
-# Doctors And Offices Reviews Back End
+# Medications and Complicatio Back End
 
 # Description
 This site allows users to enter reviews of doctors and their offices as well as allowing viewers to see the reviews. This is the back end Ruby API repository which is to be used in conjuction with the front end Javascript repository (https://github.com/DavidNNussbaum/doctors-and-offices-reviews-front-end). 

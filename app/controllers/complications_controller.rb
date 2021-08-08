@@ -16,8 +16,9 @@ before_action :set_complication, only: [:show, :update, :destroy]
         @complication = Complication.new(complication_params)
 
         if @complication.save
-            render json: ComplicationSerializer.new(@complication).serializable_hash, status: :created
+            render json:  MedicationSerializer.new(@complication.medication).serializable_hash, status: :created 
         else
+          byebug
             render json: @complication.errors, status: :unprocessable_entity
         end
     end
