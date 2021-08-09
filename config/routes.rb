@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: [:create]
+  resources :sessions, only: [:create]
   resources :complications, except: [:index]
   resources :medications do 
     resources :complications, only: [:index]
