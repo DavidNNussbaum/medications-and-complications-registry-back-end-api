@@ -1,5 +1,6 @@
 class ComplicationsController < ApplicationController
 before_action :set_complication, only: [:show, :update, :destroy]
+skip_before_action :authorized, only: [:create, :update, :destroy]
 
     def index
         medication = Medication.find_by(id: params[:medication_id])
@@ -8,12 +9,12 @@ before_action :set_complication, only: [:show, :update, :destroy]
         render json: ComplicationSerializer.new(@complications).serializable_hash
     end
 
-    def show
-        render json: ComplicationSerializer.new(@complication).serializable_hash
-    end
+    # def show
+    #     render json: ComplicationSerializer.new(@complication).serializable_hash
+    # end
 
     def create
-        @complication = Complication.new(complication_params)
+        @complication = current_user.complications.new(complication_params)
 
         if @complication.save
             render json:  ComplicationSerializer.new(@complication).serializable_hash, status: :created 
@@ -41,7 +42,7 @@ before_action :set_complication, only: [:show, :update, :destroy]
       private
          
         def set_complication
-          @complication = Complication.find(params[:id])
+          @complication = current_user.complications.find(params[:id])
         end
     
          

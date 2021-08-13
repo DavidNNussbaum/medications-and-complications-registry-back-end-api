@@ -1,5 +1,6 @@
 class MedicationsController < ApplicationController
     before_action :set_medication, only: [:show, :update, :destroy]
+    skip_before_action :authorized, only: [:create, :index]
 
     def index 
         @medications = Medication.order_by_name_strength
