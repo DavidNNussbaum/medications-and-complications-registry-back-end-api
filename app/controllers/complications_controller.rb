@@ -9,17 +9,14 @@ skip_before_action :authorized, only: [:create, :update, :destroy]
         render json: ComplicationSerializer.new(@complications).serializable_hash
     end
 
-    # def show
-    #     render json: ComplicationSerializer.new(@complication).serializable_hash
-    # end
-
     def create
         @complication = current_user.complications.new(complication_params)
 
         if @complication.save
             render json:  ComplicationSerializer.new(@complication).serializable_hash, status: :created 
         else
-            render json: @complication.errors, status: :unprocessable_entity
+          puts @complication.errors.full_messages
+          render json: @complication.errors, status: :unprocessable_entity
         end
     end
 

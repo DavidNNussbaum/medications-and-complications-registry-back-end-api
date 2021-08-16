@@ -17,7 +17,7 @@ class MedicationsController < ApplicationController
         if @medication.save
             render json:  MedicationSerializer.new(@medication).serializable_hash, status: :created 
         else
-            render json: @medication.errors, status: :unprocessable_entity
+            render json: { error: @medication.errors.full_messages.to_sentence}, status: :unprocessable_entity
         end
     end
 
