@@ -1,6 +1,6 @@
 class ComplicationsController < ApplicationController
 before_action :set_complication, only: [:show, :update, :destroy]
-skip_before_action :authorized, only: [:create, :update, :destroy]
+before_action :authorized, only: [:create, :update, :destroy]
 
     def index
         medication = Medication.find_by(id: params[:medication_id])
