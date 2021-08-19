@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_many :complications
     has_many :medications, through: :complications
-    has_secure_password
+    validates :first_name, presence: true
     validates :email, presence: true, uniqueness: true
+    has_secure_password
+    
 end

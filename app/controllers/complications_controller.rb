@@ -15,8 +15,7 @@ before_action :authorized, only: [:create, :update, :destroy]
         if @complication.save
             render json:  ComplicationSerializer.new(@complication).serializable_hash, status: :created 
         else
-          puts @complication.errors.full_messages
-          render json: @complication.errors, status: :unprocessable_entity
+          render json: { error: @complication.errors.full_messages.to_sentence}, status: :unprocessable_entity
         end
     end
 
@@ -24,7 +23,7 @@ before_action :authorized, only: [:create, :update, :destroy]
         if @complication.update(complication_params)
             render json: ComplicationSerializer.new(@complication).serializable_hash
         else
-            render json: @complication.errors, status: :unprocessable_entity
+          render json: { error: @complication.errors.full_messages.to_sentence}, status: :unprocessable_entity
         end
     end
 

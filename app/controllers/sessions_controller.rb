@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
             token = encode_token({user_id: @user.id})
             render json: { user: UserSerializer.new(@user).serializable_hash, token: token}, status: :created 
         else
-            render json: {errors: 'Invalid'}
+            render json: {error: 'Invalid User Name Or Password'}, status: :unprocessable_entity
         end
 
     end
