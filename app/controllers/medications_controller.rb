@@ -13,7 +13,6 @@ class MedicationsController < ApplicationController
 
     def create
         @medication = Medication.new(medication_params)
-
         if @medication.save
             render json:  MedicationSerializer.new(@medication).serializable_hash, status: :created 
         else

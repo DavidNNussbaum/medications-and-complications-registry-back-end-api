@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
         else
             render json: {error: 'Invalid User Name Or Password'}, status: :unprocessable_entity
         end
-
     end
 
     private
