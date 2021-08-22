@@ -1,5 +1,5 @@
 class ComplicationsController < ApplicationController
-before_action :set_complication, only: [:show, :update, :destroy]
+before_action :set_complication, only: [:update, :destroy]
 before_action :authorized, only: [:create, :update, :destroy]
 
     def index
@@ -29,7 +29,7 @@ before_action :authorized, only: [:create, :update, :destroy]
         if @complication.destroy
           render json: {message: "Complication successfully removed"}
         else
-          render json: {message: "Something went wrong! Errors: #{@complication.errors.full_messages}"}
+          render json: {message: "Something went wrong! Errors: #{@complication.errors.full_messages.to_sentence}"}
         end
       end
     
